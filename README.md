@@ -7,5 +7,5 @@
 
 # PHP
 
-- Notess , this file creates a token with malicious scripts inside when run.
+- api_to_shell.php , this file creates a token with malicious scripts inside when run.
 
