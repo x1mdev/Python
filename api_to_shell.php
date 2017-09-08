@@ -1,6 +1,6 @@
 <?php
 
-define('KEY', "ooghie1Z Fae8aish OhT3fie6 Gae2aiza");
+define('KEY', "INSERT_KEY_HERE");
 
 function sign($data) {
     return hash_hmac('md5', $data, KEY);
