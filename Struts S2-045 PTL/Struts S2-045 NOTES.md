@@ -66,7 +66,4 @@ Conclusion
 This exercise explained how to gain code execution when a Struts application is vulnerable to s2-045. When you are coming across a Struts application, it's essential that you test for this issue.
 
 
-
-https://www.google.nl/search?q=download+file+from+vps+to+pc&rlz=1C1CHFX_enNL754NL754&oq=download+file+from+vps&aqs=chrome.1.69i57j0l5.6699j0j4&sourceid=chrome&ie=UTF-8
-
 https://securityonline.info/exploiting-apache-struts-s2-045-cve-2017-5638-vulnerability-with-metasploit/ 
